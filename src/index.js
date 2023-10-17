@@ -1,8 +1,7 @@
-import express from 'express';
+const express = require('express');
 
-import connect from './config/database.js';
-import router from './routes/index.js';
-import TweetRepository from './repository/tweet-respository.js';
+const connect = require('./config/database.js');
+const router = require('./routes');
 
 const app = express();
 

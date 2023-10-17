@@ -1,4 +1,4 @@
-import Tweet from '../models/tweet';
+const Tweet = require('../models/tweet.js');
 
 class CrudRepository {
   constructor(model) {
@@ -60,4 +60,4 @@ class CrudRepository {
 }
 
 
-export default CrudRepository;
+module.exports =CrudRepository;

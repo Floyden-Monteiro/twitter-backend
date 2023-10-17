@@ -1,7 +1,7 @@
-import Hashtag from '../models/hashtag';
-import CrudRepository from './crud-repository';
+const CrudRepository = require('./crud-repository.js');
+const Hashtag = require('../models/hashtag.js');
 
-class HashRepository extends CrudRepositorytory {
+class HashRepository extends CrudRepository {
   constructor() {
     super(Hashtag);
   }
@@ -27,19 +27,21 @@ class HashRepository extends CrudRepositorytory {
       throw error;
     }
   }
+
   async getHashtag(id) {
     try {
-      let Hashtag = await Hashtag.findById(id);
-      return Hashtag;
+      let singleHashtag = await Hashtag.findById(id);
+      return singleHashtag;
     } catch (error) {
       console.log(error);
       throw error;
     }
   }
+
   async deleteHashtag(id) {
     try {
-      let Hashtag = await Hashtag.deleteOne(id);
-      return Hashtag;
+      let result = await Hashtag.deleteOne({ _id: id });
+      return result;
     } catch (error) {
       console.log(error);
       throw error;
@@ -47,4 +49,4 @@ class HashRepository extends CrudRepositorytory {
   }
 }
 
-export default HashRepository;
+module.exports =  HashRepository;

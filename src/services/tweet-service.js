@@ -1,9 +1,9 @@
-import { HashTagRepo, TweetRepo } from '../repository';
+const { TweetRepo, HashtagRepo } = require('../repository');
 
 class TweetService {
   constructor() {
     this.TweetRepo = new TweetRepo();
-    this.HashTagRepo = new HashTagRepo();
+    this.HashtagRepo = new HashtagRepo();
   }
 
   async create(data) {
@@ -14,8 +14,8 @@ class TweetService {
 
     const tweet = await this.TweetRepo.create(data);
 
-    let altreadyPresentTags = await this.HashTagRepo.findByName(tags);
-    let textOfPresentTags = altreadyPresentTags.map((tags) => tags.text);
+    let alreadyPresentTags = await this.HashtagRepo.getHashtagByName(tags);
+    let textOfPresentTags = alreadyPresentTags.map((tag) => tag.text);
     let newTags = tags.filter((tag) => !textOfPresentTags.includes(tag));
     newTags = newTags.map((tag) => {
       return {
@@ -24,8 +24,8 @@ class TweetService {
       };
     });
 
-    await this.HashTagRepo.bulkCreate(newTags);
-    altreadyPresentTags.forEach((tag) => {
+    await this.HashtagRepo.bulkCreate(newTags);
+    alreadyPresentTags.forEach((tag) => {
       tag.tweets.push(tweet.id);
       tag.save();
     });
@@ -34,4 +34,4 @@ class TweetService {
   }
 }
 
-export default TweetService;
+module.exports = TweetService;

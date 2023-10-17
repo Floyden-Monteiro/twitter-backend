@@ -1,5 +1,6 @@
-import CrudRepository from './crud-repository';
-import Comment from '../models/comment';
+
+const Comment = require('../models/comment.js');
+const CrudRepository = require('./crud-repository.js');
 
 class CommentRepository extends CrudRepository {
   constructor() {

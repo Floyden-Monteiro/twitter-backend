@@ -1,5 +1,7 @@
-import CrudRepository from './crud-repository';
-import Like from '../models/like';
+
+
+const Like = require('../models/like.js');
+const CrudRepository = require('./crud-repository.js');
 
 class LikeRepository extends CrudRepository {
   constructor() {

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const likeSchema = new mongoose.Schema({
   user: {
@@ -17,4 +17,4 @@ const likeSchema = new mongoose.Schema({
 });
 
 const Like = mongoose.model('Like', likeSchema);
-export default Like;
+module.exports= Like;

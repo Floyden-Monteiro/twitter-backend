@@ -1,11 +1,9 @@
-import mongoose from 'mongoose';
-
+const mongoose = require('mongoose');
 const connect = async () => {
   await mongoose.connect(
-   'mongodbUrl'
-    
+    'mongodb+srv://fm:floydenishere@cluster0.pdhndlh.mongodb.net/'
   );
 };
 
-export default connect;
+module.exports = connect;
  

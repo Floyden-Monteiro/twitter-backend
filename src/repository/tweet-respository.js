@@ -1,5 +1,5 @@
-import Tweet from '../models/tweet.js';
-import CrudRepository from './crud-repository.js';
+const Tweet = require('../models/tweet.js');
+const CrudRepository = require('./crud-repository.js');
 
 class TweetRepository extends CrudRepository {
   constructor() {
@@ -45,4 +45,4 @@ class TweetRepository extends CrudRepository {
   }
 }
 
-export default TweetRepository;
+module.exports = TweetRepository;

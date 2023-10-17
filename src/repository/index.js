@@ -1,4 +1,8 @@
+// index.js in 'repository' directory
 module.exports = {
-  TweetRepo: require('./hashtag-respository'),
-  HashTagRepo: require('./tweet-respository'),
+  TweetRepo: require('./tweet-respository'),
+  HashtagRepo: require('./hashtag-respository')
 };
+
+
+
