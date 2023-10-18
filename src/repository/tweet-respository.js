@@ -6,15 +6,6 @@ class TweetRepository extends CrudRepository {
     super(Tweet);
   }
 
-  async create(data) {
-    try {
-      let tweet = await Tweet.create(data);
-      return tweet;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
 
   async getAllTweets() {
     try {

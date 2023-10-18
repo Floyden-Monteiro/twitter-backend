@@ -23,9 +23,28 @@ const createTweet = async (req, res) => {
   }
 };
 
+// const getTweets = async (req, res) => {
+//   try {
+//     const response = await tweetService.getTweets(id);
+//     return res.status(200).json({
+//       success: true,
+//       message: 'Tweet fetched successfully',
+//       data: response,
+//       errors: {},
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: 'Tweet fetch failed',
+//       data: {},
+//       errors: error,
+//     });
+//   }
+// };
 const getTweet = async (req, res) => {
   try {
-    const response = await tweetService.getTweets(id);
+    const id = req.params.id;
+    const response = await tweetService.getTweet(id);
     return res.status(200).json({
       success: true,
       message: 'Tweet fetched successfully',

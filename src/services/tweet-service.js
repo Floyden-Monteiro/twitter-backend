@@ -32,6 +32,11 @@ class TweetService {
 
     return tweet;
   }
+
+  async getTweet(id) {
+    const tweet = await this.TweetRepo.getTweet(id);
+    return tweet;
+  }
 }
 
 module.exports = TweetService;
