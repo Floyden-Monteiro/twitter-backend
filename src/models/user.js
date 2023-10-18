@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrpyt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -21,12 +22,18 @@ const userSchema = new mongoose.Schema({
   tweets: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      
     },
   ],
 });
 
+userSchema.pre('save', async function (next) {
+  const user = this;
+  const salt = await bcrpyt.genSaltSync(9);
+  const encryptedPassword = await bcrpyt.hashSync(user.password, salt);
+  user.password = encryptedPassword;
+  next();
+});
 
 const User = mongoose.model('User', userSchema);
 
-module.exports=User;
+module.exports = User;
