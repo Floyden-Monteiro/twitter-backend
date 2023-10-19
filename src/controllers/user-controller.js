@@ -21,5 +21,24 @@ const signUp = async (req, res) => {
     });
   }
 };
+const signIn = async (req, res) => {
+  try {
+    const data = req.body;
+    const response = await userService.signIn(data);
+    return res.status(201).json({
+      success: true,
+      message: 'Successflly Signed In',
+      data: response,
+      err: {},
+    });
+  } catch (error) {
+    return res.status(201).json({
+      success: false,
+      message: 'Error Encountered when signed in',
+      data: {},
+      err: error,
+    });
+  }
+};
 
-module.exports = { signUp };
+module.exports = { signUp,signIn };
