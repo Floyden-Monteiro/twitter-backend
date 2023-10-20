@@ -1,4 +1,3 @@
-
 const Comment = require('../models/comment.js');
 const CrudRepository = require('./crud-repository.js');
 
@@ -7,3 +6,5 @@ class CommentRepository extends CrudRepository {
     super(Comment);
   }
 }
+
+module.exports = CommentRepository;
