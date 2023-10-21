@@ -1,14 +1,16 @@
 const express = require('express');
+const passport = require('passport');
 
 const connect = require('./config/database.js');
 const router = require('./routes');
+const { passpaortAuth } = require('./middlewares/jwt-middleware.js');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-
+app.use(passport.initialize());
+passpaortAuth(passport);
 
 app.use('/api/v1', router);
 app.listen(3000, async () => {

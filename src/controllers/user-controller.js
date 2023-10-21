@@ -32,6 +32,7 @@ const signIn = async (req, res) => {
       err: {},
     });
   } catch (error) {
+    console.log(error);
     return res.status(201).json({
       success: false,
       message: 'Error Encountered when signed in',
